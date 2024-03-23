@@ -25,8 +25,12 @@ function Signup() {
             console.log(response.data);
         })
         .catch(error => {
-            // Handle error
             console.error('Error occurred:', error);
+            if (error.response && error.response.status === 401) {
+                setError('Fill all details');
+            } else {
+                setError('An error occurred during signup. Please try again later.');
+            }
         });
     };
     

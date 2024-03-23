@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
-    const [userInfo, setUserInfo] = useState(null);
+    const [error, setError] = useState(null); // Add a new state for error
 
     const navigate = useNavigate();
 
@@ -21,30 +21,16 @@ function Login() {
             const token = response.data.token;
             navigate('/profile');
             localStorage.setItem('token', token);
-            verifyToken(token); // Call verifyToken after successful login
         })
         .catch(error => {
             console.error('Error occurred:', error);
+            if (error.response && error.response.status === 401) {
+                setError('Invalid credentials. Please check your username and password.');
+            } else {
+                setError('An error occurred during login. Please try again later.');
+            }
         });
     };
-
-    const verifyToken = (token) => {
-        axios.get('http://localhost:3000/auth/verifyToken', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            const { username, email } = response.data;
-            setUserInfo({ username, email });
-            console.log('Username:', username);
-            console.log('Email:', email);
-            // You can also use the username and email as needed
-        })
-        .catch(error => {
-            console.error('Error verifying token:', error);
-        });
-    }
 
     return (
         <div>
@@ -54,6 +40,7 @@ function Login() {
                     <div className="login-welcome-row">
                         <h1>Log In!</h1>
                     </div>
+                    {error && <div className="error-message">{error}</div>}
                     <div className="text-field">
                         <label htmlFor="username">Username:</label>
                         <input

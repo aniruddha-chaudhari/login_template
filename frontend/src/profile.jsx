@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Sidebar from './components/sidebar';
 
-class ProfilePage extends React.Component {
+const ProfilePage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const username = location.state ? location.state.username : null;
+
+  useEffect(() => {
+    const checkTokenExpiration = () => {
+      const tokenExpiration = localStorage.getItem('tokenExpiration');
+      if (tokenExpiration && Date.now() > tokenExpiration) {
+        // Token expired, remove it
+        localStorage.removeItem('token');
+        localStorage.removeItem('tokenExpiration');
+        navigate('/login'); // Redirect to the login page
+      }
+    };
+
+    checkTokenExpiration();
+  }, [navigate]);
+
+  return (
+    <div>
+      <Sidebar />
+      <Profile username={username} />
+    </div>
+  );
+};
+
+class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'JohnDoe',
+      username: props.username || 'JohnDoe', // Use the prop if provided, otherwise use a default value
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       followers: 100,
       following: 50
@@ -13,7 +42,6 @@ class ProfilePage extends React.Component {
 
   render() {
     return (
-      
       <div className="profile">
         <h1>{this.state.username}</h1>
         <p>{this.state.bio}</p>

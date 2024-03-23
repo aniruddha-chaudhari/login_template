@@ -1,0 +1,125 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 230px;
+    /* background-color: #fd8181; */
+    height: 100vh;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+
+  
+ 
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  .sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .sidebar-list li {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* Add some spacing between buttons */
+  }
+  .sidebar-list li:hover {
+    background-color: #555;
+  }
+
+  .sidebar-list li img {
+    margin-right: 10px; /* Adjust the spacing between the icon and text */
+    width: 20px; /* Adjust the size of the icon */
+    height: 20px; /* Adjust the size of the icon */
+  }
+
+  .sidebar-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Increase left padding */
+    text-align: left;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  
+  .sidebar-button img {
+    margin-right: 10px; /* Adjust the spacing between the icon and text */
+    width: 20px; /* Adjust the size of the logo */
+    height: 20px; /* Adjust the size of the logo */
+  }
+
+  .sidebar-button:hover {
+    background-color: #555;
+  }
+
+  .sidebar-button:hover {
+    background-color: #555;
+  }
+  
+  .sidebar-toggle {
+    position: fixed; /* Make the toggle button fixed */
+    top: 10px; /* Adjust top position */
+    left: 10px; /* Adjust left position */
+    z-index: 1000;
+    cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+  }
+  
+  .hamburger-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .hamburger-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+  }
+  .hamburger-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  

@@ -9,9 +9,9 @@
       if(!existingUser) {
           throw new Error("user not found");
       }
-     const isPasswordMatch = bcrypt.compare(password,existingUser.password);
-     if(!isPasswordMatch) {
-        throw new Error("Invalid password");
+      const isPasswordMatch = await bcrypt.compare(password, existingUser.password);
+if (!isPasswordMatch) {
+    throw new Error("Invalid password");
      }
      const token = genrateToken(existingUser);
      return token;
