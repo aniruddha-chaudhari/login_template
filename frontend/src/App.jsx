@@ -4,7 +4,7 @@ import Login from "./login";
 import Signup from "./Signup";
 import ProfilePage from "./profile";
 import './App.css';
-import * as React from "react";
+
 
 
    

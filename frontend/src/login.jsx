@@ -54,7 +54,42 @@ function Login() {
                     <div className="login-welcome-row">
                         <h1>Log In!</h1>
                     </div>
-                    {/* ... */}
+                    <div className="text-field">
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            aria-label="Username"
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Your Username"
+                            required
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="Username Icon" />
+                    </div>
+                    <div className="text-field">
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            id="password"
+                            type="password"
+                            aria-label="Password"
+                            name="password"
+                            placeholder="Your Password"
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <img src="https://icons.veryicon.com/png/o/internet--web/sesame-treasure/login-password-3.png" alt="Password Icon" />
+                    </div>
+                    <input type="submit" className="my-form__button" value="Login" onClick={handleSubmit} />
+                    <div className="my-form__actions">
+                        <div className="my-form__row">
+                            <span>Did you forget your password?</span>
+                            <a href="#" title="Reset Password">Reset Password</a>
+                        </div>
+                        <div className="my-form__signup">
+                            <a href="signup" title="Create Account">Create Account</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
